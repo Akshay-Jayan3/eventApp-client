@@ -1,0 +1,21 @@
+.badgeContainer{
+    height:100px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-left: 24px;
+    gap:4px;
+    flex-direction: column;
+    border-radius: 5px;
+   
+
+}
+
+.mainTag{
+    color:#fff;
+    font-size: 24px;
+}
+.subTag{
+    color:#fff;
+    font-size: 14px;
+}

@@ -1,0 +1,70 @@
+@import '../../Styles//colors';
+
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+.sidebar_container{
+    width:250px;
+    
+
+}
+.logo{
+    width:100%;
+    height: 48px;
+}
+.menu{
+    display: flex;
+    flex-direction:column;
+    &_wrapper{
+        display:flex;
+        flex-direction: column;
+        list-style: none;
+        padding: 0;
+        gap:16px;
+        padding:8px;
+        margin-top: 24px;
+        li{
+            display: flex;
+            justify-content: flex-start;
+            align-items:center ;
+            height:48px;
+            border-radius: 5px;
+            padding-left: 8px;
+            .menu_link{
+                display: flex;
+                height: 24px;
+                align-items: center;
+                gap:4px
+
+
+            }
+        }
+        .menu_items{
+            background-color: $surface-bg;
+            & a{
+                text-decoration: none;
+                color:$text-grey;
+                font-size: 14px;
+            }
+           
+           
+        }
+        .active_menu{
+            background-color: $secondary-blue;
+            & a{
+                text-decoration: none;
+                color:$primary-blue;
+                font-size: 14px;
+                font-weight: 400;
+            }
+
+        }
+
+    }
+    
+    
+}
+

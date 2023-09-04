@@ -1,0 +1,27 @@
+@import '../../Styles//colors';
+
+.Tab_wrapper{
+    display: flex;
+    padding-left: 48px;
+    border-bottom: 1px solid #F4F4F4;
+    flex-direction: column;
+    position: sticky;
+    top: 180px; /* Stick to the top of the viewport */
+    z-index: 100;
+    background-color: $surface-bg;
+    
+}
+.tabBorder{
+    height: 3px;
+    width: 3.33%;
+    background-color: blue;
+    transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
+    transform: translateX(calc((var(--active-tab) - 1) * 103.33%));
+    width: var(--tab-width, 100px); /* Default width */
+}
+.tabs{
+    display: flex;
+    align-items: center;
+    gap:8px
+
+}
