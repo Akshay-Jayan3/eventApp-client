@@ -14,13 +14,27 @@ body{
 
 .login {
     display: flex;
+    height: 100%;
+.left_container{
+    width:50%;
+    height: 100vh;
+    display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    height: 100%;
-    gap:16px;
-
-   
+    background-color: #B10DC9;
+    img{
+        width:50%
+    }
+}
+   .right_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F4E5F9;
+    width:50%;
+    height: 100vh;
+    
+   }
 }
 
 .welcomeBadge_container{

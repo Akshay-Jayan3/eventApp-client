@@ -1,8 +1,8 @@
 import React, { lazy, Suspense } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route , Navigate} from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
 import SpinLoader from "../components/SpinLoader";
-import Layout from "../layout";
+
 
 const Login = lazy(() => import("../Pages/Auth/Login/index"));
 const Error404 = lazy(() => import("../Pages/Auth/Error404/index"));
@@ -18,16 +18,12 @@ const PageRouter = () => {
   return (
     <>
       <Router>
-        <Layout>
           <Suspense fallback={<SpinLoader />}>
             <Routes>
-              {/* <Route path="/" element={
-          <ProtectedRoute>
-            <Home />
-          </ProtectedRoute>
-        } /> */}
+              <Route path="/" element={<Navigate replace to="/dashboard" />} />
               <Route path="/login" element={<Login />} />
               <Route
+                exact 
                 path="/dashboard"
                 element={
                   <ProtectedRoute>
@@ -73,7 +69,6 @@ const PageRouter = () => {
               <Route path="*" element={<Error404 />} />
             </Routes>
           </Suspense>
-        </Layout>
       </Router>
     </>
   );
