@@ -12,10 +12,10 @@ const Login = () => {
     try {
       const response = await axios.post('http://localhost:4000/auth/login', credentials);
       if (response.status === 200) {
-        const { token, userid } = response.data;
-        if (token && userid) {
+        const { token, userId } = response.data;
+        if (token && userId) {
           localStorage.setItem('token', token);
-          localStorage.setItem('userid', userid);
+          localStorage.setItem('userId', userId);
           navigate('/dashboard');
         } else {
          
