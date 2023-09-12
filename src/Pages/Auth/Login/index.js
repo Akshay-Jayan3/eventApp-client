@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState ,useContext} from "react";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import { UserContext } from '../../../contexts/authContext';
 import LoginCard from "../../../components/login";
 import image from "../../../assets/images/login.svg"
 
 const Login = () => {
+  const { updateUser } = useContext(UserContext);
   const navigate = useNavigate()
   const [credentials, setCredentials] = useState({ username: '', password: '' });
   const handleLogin = async (e) => {
@@ -12,10 +14,12 @@ const Login = () => {
     try {
       const response = await axios.post('http://localhost:4000/auth/login', credentials);
       if (response.status === 200) {
-        const { token, userId } = response.data;
+        const { token, userId ,userDetails} = response.data;
         if (token && userId) {
           localStorage.setItem('token', token);
           localStorage.setItem('userId', userId);
+          localStorage.setItem('userData', JSON.stringify(userDetails));
+          updateUser(userDetails)
           navigate('/dashboard');
         } else {
          
