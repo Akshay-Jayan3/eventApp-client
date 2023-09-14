@@ -33,7 +33,7 @@ body{
     background-color: #F4E5F9;
     width:50%;
     height: 100vh;
-    padding-block: 30px;
+    padding-inline: 30px;
     
    }
 }
@@ -46,4 +46,18 @@ body{
     padding-inline: 48px;
     padding-block: 16px;
 
+}
+
+
+@media only screen and (max-width: 768px) {
+   .login{
+    .left_container{
+        display: none;
+    }
+    .right_container{
+       width:100%;
+        
+       }
+   }
+   
 }
