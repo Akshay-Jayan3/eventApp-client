@@ -1,0 +1,31 @@
+.dhead {
+    display: flex;
+    justify-content: space-between;
+
+    h3 {
+        margin-left: 50px;
+        color: var(--text-color, #4A4A4A);
+        font-family: Nunito;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+    }
+
+    p {
+        margin-right: 50px;
+        color: var(--blue-D, #0074D9);
+        font-family: Nunito;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        text-decoration-line: underline;
+        cursor: pointer;
+    }
+}
+
+.event {
+
+    width: fit-content;
+}
