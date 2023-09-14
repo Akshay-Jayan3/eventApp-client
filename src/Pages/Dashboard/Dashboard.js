@@ -1,6 +1,6 @@
 import React from 'react';
 import WelcomeBadge from '../../components/WelcomeBadge';
-import Infocard from '../../components/Infocard';
+// import Infocard from '../../components/Infocard';
 import TabDash from "../../components/TabDash";
 import EventCard from '../../components/EventCard';
 import styles from "./styles.module.scss";
@@ -34,7 +34,7 @@ const Dashboard = () => {
         <WelcomeBadge Page="Dashboard" />
       </div>
       <div className='card_container'>
-        <div><Infocard></Infocard></div>
+        {/* <div><Infocard></Infocard></div> */}
       </div>
       <div className={styles.event}>
         <div className={styles.dhead}>
