@@ -7,7 +7,7 @@ const LoginCard = ({ credentials, handleLogin, handleInputChange }) => {
       <div className={styles.wrapper}>
         <div className={styles.welcome}>
           <h2>Welcome Back !</h2>
-          <p>Effortless Event Planning Starts Here - Sign in Now!</p>
+          <p>Please enter your details to sign in.</p>
         </div>
         <div>
           <form onSubmit={handleLogin}>
