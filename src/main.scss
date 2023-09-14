@@ -19,11 +19,17 @@ body{
     width:50%;
     height: 100vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-block: 80px;
     align-items: center;
     background-color: #B10DC9;
     img{
         width:50%
+    }
+    h3{
+        color:#fff;
+        font-size: 20px;
     }
 }
    .right_container{
