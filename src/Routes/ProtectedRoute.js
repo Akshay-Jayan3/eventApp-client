@@ -1,19 +1,9 @@
-
-import { Navigate } from 'react-router-dom';
+import { Navigate } from "react-router-dom";
+import Layout from "../layout";
 
 const ProtectedRoute = ({ children }) => {
-
-    // const { loading, isAuthenticated, user } = useSelector(state => state.user);
-    const loading=false
-    const isAuthenticated=true
-
-    return (
-        <>
-            {loading === false && (
-                isAuthenticated === false ? <Navigate to="/login" /> : children
-            )}
-        </>
-    );
+  const isAuthenticated = localStorage.getItem("token");
+  return <>{isAuthenticated ? <Layout>{children}</Layout> : <Navigate to="/login" />}</>;
 };
 
 export default ProtectedRoute;
