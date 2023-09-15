@@ -6,31 +6,35 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import CategoryIcon from '@mui/icons-material/Category';
 
-const EventCard = ({ date, location, category, Title, time }) => {
+const EventCard = ({ date, location, category, Title, time ,photoUrls}) => {
   return (
     <div className={styles.Cardcontainer}>
       <div className={styles.EventPhoto}>
-        <img src={EventPhoto} alt="event_Photo" />
+        <img src={photoUrls? `${process.env.REACT_APP_API_URL}/${photoUrls}`:EventPhoto} alt="event_Photo" />
       </div>
       <div className={styles.eventDetails}>
+      <div className={styles.DetailsWrapper}>
+          <div className={styles.item}>
+            <p>Dec 12th-15th</p>
+          </div>
+          <div className={styles.item}>
+            <p>12AM-2PM</p>
+          </div>
+          <div className={styles.category}>
+            <p>sports</p>
+          </div>
+        </div>
         <div className={styles.Title}>
           <h4>{Title}</h4>
         </div>
-        <div className={styles.DetailsWrapper}>
-          <div className={styles.item}>
+        <div className={styles.location}>
             <span>
-              <CalendarTodayIcon fontSize="small" />
+              <LocationOnIcon fontSize="xsmall" />
             </span>
-            <p>{date}</p>
+            <p>{location}</p>
           </div>
-          <div className={styles.item}>
-            <span>
-              <AccessTimeIcon fontSize="small" />
-            </span>
-            <p>{time}</p>
-          </div>
-        </div>
-        <div className={styles.DetailsWrapper}>
+       
+        {/* <div className={styles.DetailsWrapper}>
           <div className={styles.item}>
             <span>
               <LocationOnIcon fontSize="small" />
@@ -43,7 +47,7 @@ const EventCard = ({ date, location, category, Title, time }) => {
             </span>
             <p>{category}</p>
           </div>
-        </div>
+        </div> */}
        
       </div>
     </div>
