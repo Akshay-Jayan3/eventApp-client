@@ -3,7 +3,7 @@ import styles from './style.module.scss'
 
 const Search = ({searchValue,handleSearch}) => {
   return (
-    <div className={styles.searchContainer}><form ><input value ={searchValue} type="search" placeholder='Search ' onChange={handleSearch}/></form></div>
+    <div className={styles.searchContainer}><form ><input value ={searchValue} type="search" placeholder="Search events by name ..." onChange={handleSearch}/></form></div>
   )
 }
 

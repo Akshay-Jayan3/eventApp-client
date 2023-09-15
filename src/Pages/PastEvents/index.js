@@ -10,7 +10,6 @@ import Search from "../../components/Search";
 const PastEvents = () => {
   const [activeTab, setActiveTab] = useState("All");
   const [searchValue,setSearchValue]=useState('')
-  console.log(searchValue)
   const handleTabChange = (tabName) => {
     setActiveTab(tabName);
   };
@@ -19,9 +18,22 @@ const PastEvents = () => {
   };
   
   const categoryUrl = "/categories";
-  const PastEventsUrl = searchValue !=="" ? `/events/pastEvents?search=arts` : activeTab === 'All' ? '/events/pastEvents'  : `/events/pastEvents?category=${activeTab}`;
+  const basePastEventsUrl = "/events/pastEvents";
+  let url = basePastEventsUrl;
+  
+  if (searchValue !== "") {
+    url += `?search=${searchValue}`;
+  }
+  
+  if (activeTab !== "All") {
+    if (url.includes("?")) {
+      url += `&category=${activeTab}`;
+    } else {
+      url += `?category=${activeTab}`;
+    }
+  }
   const { data: categoryData } = useFetch(categoryUrl);
-  const { data: pastEventData, loading, error } = useFetch(PastEventsUrl);
+  const { data: pastEventData, loading, error } = useFetch(url);
  
   return (
     <div className="main_container">
