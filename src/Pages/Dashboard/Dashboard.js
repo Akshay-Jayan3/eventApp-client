@@ -5,9 +5,11 @@ import TabDash from "../../components/TabDash";
 import EventCard from '../../components/EventCard';
 import styles from "./styles.module.scss";
 import { Link } from 'react-router-dom';
+import SmallCalendar from '../../components/Calendar/SmallCalendar';
 
 const Dashboard = () => {
-
+ 
+  // changed this file
 
   const Events = [
     {
@@ -36,44 +38,51 @@ const Dashboard = () => {
       <div className='card_container'>
         {/* <div><Infocard></Infocard></div> */}
       </div>
-      <div className={styles.event}>
-        <div className={styles.dhead}>
-          <h3>Past events</h3>
-          <Link to="/past_events"><p>View All</p></Link>
+      <div className={styles.main}>
+        <div className={styles.left}>
+          <div className={styles.event}>
+            <div className={styles.dhead}>
+              <h3>Past events</h3>
+              <Link to="/past_events"><p>View All</p></Link>
+            </div>
+            <div>
+              <TabDash>
+                {Events.map((event) => (
+                  <EventCard
+                    Title={event.Title}
+                    category={event.category}
+                    date={event.date}
+                    time={event.time}
+                    location={event.location}
+                    key={event.id}
+                  />
+                ))}
+              </TabDash>
+            </div>
+          </div>
+          <div className={styles.event}>
+            <div className={styles.dhead}>
+              <h3>Upcoming events</h3>
+              <Link to="/upcoming_events"><p>View All</p></Link>
+            </div>
+            <div>
+              <TabDash>
+                {Events.map((event) => (
+                  <EventCard
+                    Title={event.Title}
+                    category={event.category}
+                    date={event.date}
+                    time={event.time}
+                    location={event.location}
+                    key={event.id}
+                  />
+                ))}
+              </TabDash>
+            </div>
+          </div>
         </div>
-        <div>
-          <TabDash>
-            {Events.map((event) => (
-              <EventCard
-                Title={event.Title}
-                category={event.category}
-                date={event.date}
-                time={event.time}
-                location={event.location}
-                key={event.id}
-              />
-            ))}
-          </TabDash>
-        </div>
-      </div>
-      <div className={styles.event}>
-        <div className={styles.dhead}>
-          <h3>Upcoming events</h3>
-          <Link to="/upcoming_events"><p>View All</p></Link>
-        </div>
-        <div>
-          <TabDash>
-            {Events.map((event) => (
-              <EventCard
-                Title={event.Title}
-                category={event.category}
-                date={event.date}
-                time={event.time}
-                location={event.location}
-                key={event.id}
-              />
-            ))}
-          </TabDash>
+        <div className={styles.right}>
+           <SmallCalendar></SmallCalendar>
         </div>
       </div>
     </div>
