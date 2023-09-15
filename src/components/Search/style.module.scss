@@ -1,20 +1,31 @@
+@import '../../Styles//colors';
+
 .searchContainer{
 
-   padding-inline:  48px;
+    padding-inline:  48px;
     padding-block: 16px;
+    position: sticky;
+    background-color: $surface-bg;
+    top: 180px; /* Stick to the top of the viewport */
+    z-index: 100;
     form{
         input[type="search"]{
             width: 100%;
             padding: 12px;
-            border: 2px solid #F2F2F2;
+            border: 1px solid #F2F2F2;
             border-radius: 5px;
             padding-left: 30px;
-            color: #4A4A4A;
+            color:$primary-grey;
+
         }
         input:focus {
-            border: 2px solid #E5F0FF;
-            outline: none
+            border: 1px solid $primary-grey;
+            outline: none;
         }
+        input::placeholder {
+            color:$primary-grey; /* You can change the color to your preference */
+          }
+
     }
 
 }
