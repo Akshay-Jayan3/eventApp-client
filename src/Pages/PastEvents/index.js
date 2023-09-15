@@ -4,92 +4,67 @@ import Tab from "../../components/Tab";
 import TabePane from "../../components/TabPane";
 import TabContent from "../../components/TabContent";
 import EventCard from "../../components/EventCard";
+import useFetch from "../../hooks/useFetch";
+import Search from "../../components/Search";
 
 const PastEvents = () => {
-  const [activeTab, setActiveTab] = useState(1);
-  // const [currentTab, setCurrentTab] = useState("All");
-  const handleTabChange = (tabNumber) => {
-    setActiveTab(tabNumber);
+  const [activeTab, setActiveTab] = useState("All");
+  const [searchValue,setSearchValue]=useState('')
+  console.log(searchValue)
+  const handleTabChange = (tabName) => {
+    setActiveTab(tabName);
   };
-  const categories = [
-    { CategoryName: "All", key: 1 },
-    { CategoryName: "cultural", key: 2 },
-    { CategoryName: "Sports", key: 3 },
-  ];
-  const Events = [
-    {
-      id: 1,
-      Title: "Onam",
-      date: "03/08/2023",
-      location: "kottayam",
-      time: "9AM-6PM",
-      category: "festival",
-    },
-    {
-      id: 1,
-      Title: "Onam",
-      date: "03/08/2023",
-      location: "kottayam",
-      time: "9AM-6PM",
-      category: "festival",
-    },
-    {
-      id: 1,
-      Title: "Onam",
-      date: "03/08/2023",
-      location: "kottayam",
-      time: "9AM-6PM",
-      category: "festival",
-    },
-    {
-      id: 1,
-      Title: "Onam",
-      date: "03/08/2023",
-      location: "kottayam",
-      time: "9AM-6PM",
-      category: "festival",
-    },
-    {
-      id: 1,
-      Title: "Onam",
-      date: "03/08/2023",
-      location: "kottayam",
-      time: "9AM-6PM",
-      category: "festival",
-    },
-  ];
+  const handleSearch = (e) => {
+    setSearchValue(e.target.value);
+  };
+  
+  const categoryUrl = "/categories";
+  const PastEventsUrl = searchValue !=="" ? `/events/pastEvents?search=arts` : activeTab === 'All' ? '/events/pastEvents'  : `/events/pastEvents?category=${activeTab}`;
+  const { data: categoryData } = useFetch(categoryUrl);
+  const { data: pastEventData, loading, error } = useFetch(PastEventsUrl);
+ 
   return (
     <div className="main_container">
       <div className="welcomeBadge_container">
         <WelcomeBadge Page="PastEvents" />
       </div>
-      <div className="tabContainer">
-        <Tab activeTab={activeTab}>
-          {categories.map((category) => (
+      <Search searchValue={searchValue} handleSearch={handleSearch}/>
+        <Tab>
+          <TabePane
+            tabname="All"
+            onClick={() => handleTabChange("All")}
+            activeTab={activeTab}
+          />
+          {categoryData?.categories.map((category) => (
             <>
               <TabePane
-                tabname={category.CategoryName}
-                onClick={() => handleTabChange(category.key)}
-                key={category.key}
-              >
-                <div>helli</div>
-              </TabePane>
+                tabname={category.category}
+                onClick={() => handleTabChange(category.category)}
+                key={category._id}
+                activeTab={activeTab}
+              ></TabePane>
             </>
           ))}
         </Tab>
         <TabContent>
-          {Events.map((event) => (
-            <EventCard
-              Title={event.Title}
-              category={event.category}
-              date={event.date}
-              time={event.time}
-              location={event.location}
-              key={event.id}
-            />
-          ))}
+          {loading ? (
+            <p>loading</p>
+          ) : error ? (
+            <p>error</p>
+          ) : (pastEventData?.pastEvents.length !==0 ?
+            pastEventData?.pastEvents.map((event) => (
+              <EventCard
+                Title={event.title}
+                category={event.category}
+                date={event.startDate}
+                time={event.time}
+                location={event.location}
+                key={event._id}
+                photoUrls={event.photoUrls}
+              />
+            )):<p>{pastEventData.message}</p>
+          )}
         </TabContent>
-      </div>
     </div>
   );
 };
