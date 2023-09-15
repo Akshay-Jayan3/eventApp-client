@@ -1,8 +1,7 @@
 import  { useState, useEffect, useCallback } from "react";
 import { client } from "../services/api";
 
-const useFetch = ({ url }) => {
-    console.log(url)
+const useFetch = ( url ) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
