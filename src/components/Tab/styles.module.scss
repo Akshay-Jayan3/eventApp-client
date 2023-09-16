@@ -5,12 +5,12 @@
     padding-left: 48px;
     border-bottom: 1px solid $secondary-grey;
     flex-direction: column;
+    justify-content: center;
     position: sticky;
-    top: 252.67px; /* Stick to the top of the viewport */
+    top: 252px; /* Stick to the top of the viewport */
     z-index: 100;
     background-color: $surface-bg;
-    padding-block: 8px;
-    
+    height: 56px;
 }
 .tabBorder{
     height: 3px;
