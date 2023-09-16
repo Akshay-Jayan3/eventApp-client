@@ -7,5 +7,16 @@
     border:none;
     border-radius: 5px;
     font-size: 14px;
+    background-color: transparent;
+    color: $text-grey;
+    
+}
+.active{
+    background-color: $secondary-blue;
+    color:$primary-blue;
+}
+.TabButton:hover{
+    background-color: $ternery-grey;
+    color:$text-black
     
 }
