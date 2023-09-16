@@ -22,7 +22,7 @@ const Sidebar = () => {
                 >
                   <Link to={item.path} className={styles.menu_link}>
                     <div style={{flex:1}}>{item.icon}</div>
-                    <div style={{height:'100%'}}>{item.title}</div>
+                    <div style={{height:'100%',marginLeft:"5px"}}>{item.title}</div>
                   </Link>
                 </li>
               );

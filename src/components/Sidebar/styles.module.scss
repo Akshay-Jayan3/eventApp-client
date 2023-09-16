@@ -23,14 +23,14 @@
         flex-direction: column;
         list-style: none;
         padding: 0;
-        gap:16px;
+        gap:8px;
         padding:8px;
         margin-top: 24px;
         li{
             display: flex;
             justify-content: flex-start;
             align-items:center ;
-            height:48px;
+            height:40px;
             border-radius: 5px;
             padding-left: 8px;
             .menu_link{
@@ -48,6 +48,11 @@
                 text-decoration: none;
                 color:$text-grey;
                 font-size: 14px;
+            }
+
+            &:hover{
+                background-color: $ternery-grey;
+                color:$text-black
             }
            
            
