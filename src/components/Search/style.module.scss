@@ -12,7 +12,7 @@
         input[type="search"]{
             width: 100%;
             padding: 12px;
-            border: 1px solid #dee2e6;
+            border: 1px solid $secondary-grey;
             border-radius: 5px;
             padding-left: 30px;
             color:$primary-grey;
@@ -21,6 +21,7 @@
         input:focus {
             border: 1px solid $primary-grey;
             outline: none;
+            background-color: $ternery-grey;
         }
         input::placeholder {
             color:$primary-grey; /* You can change the color to your preference */

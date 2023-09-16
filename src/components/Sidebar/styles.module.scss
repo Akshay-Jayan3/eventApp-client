@@ -48,11 +48,13 @@
                 text-decoration: none;
                 color:$text-grey;
                 font-size: 14px;
+                font-family: 'Roboto', sans-serif;
             }
 
             &:hover{
                 background-color: $ternery-grey;
-                color:$text-black
+                color:$text-black;
+                
             }
            
            
@@ -64,6 +66,7 @@
                 color:$primary-blue;
                 font-size: 14px;
                 font-weight: 400;
+                font-family: 'Roboto', sans-serif;
             }
 
         }
