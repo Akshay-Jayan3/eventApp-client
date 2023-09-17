@@ -6,7 +6,9 @@ import TabContent from "../../components/TabContent";
 import EventCard from "../../components/EventCard";
 import useFetch from "../../hooks/useFetch";
 import Search from "../../components/Search";
-import noResult from "../../assets/images/nodata.svg";
+import noResult from "../../assets/images/no-data.png";
+import SpinLoader from "../../components/SpinLoader";
+import errorImage from "../../assets/images/error.png";
 
 const UpcomingEvents = () => {
   const [activeTab, setActiveTab] = useState("All");
@@ -35,6 +37,7 @@ const UpcomingEvents = () => {
   }
   const { data: categoryData } = useFetch(categoryUrl);
   const { data: upcomingEventData, loading, error } = useFetch(url);
+  console.log(error);
 
   return (
     <div className="main_container">
@@ -59,30 +62,35 @@ const UpcomingEvents = () => {
           </>
         ))}
       </Tab>
-      <div className="content">
+      <div className="container">
         {loading ? (
-          <p>loading</p>
+          <SpinLoader />
         ) : error ? (
-          <p>error</p>
+          <div className="error-container">
+            <img src={errorImage} style={{ width: "10%" }} alt="error" />
+            <p>Oops ,something went wrong.</p>
+            <p>Please try again later</p>
+          </div>
+        ) : upcomingEventData?.upcomingEvents.length !== 0 ? (
+          <TabContent>
+            { upcomingEventData?.upcomingEvents.map((event) => (
+            <EventCard
+              Title={event.title}
+              category={event.category}
+              date={event.startDate}
+              time={event.time}
+              location={event.location}
+              key={event._id}
+              photoUrls={event.photoUrls}
+            />
+            ))}
+          </TabContent>
         ) : (
-          upcomingEventData?.upcomingEvents.length !== 0 &&
-          upcomingEventData?.upcomingEvents.map((event) => (
-            <TabContent>
-              <EventCard
-                Title={event.title}
-                category={event.category}
-                date={event.startDate}
-                time={event.time}
-                location={event.location}
-                key={event._id}
-                photoUrls={event.photoUrls}
-              />
-            </TabContent>
-          ))
+          <div className="noResult">
+            <img src={noResult} style={{ width: "20%" }} alt="not found" />
+            <p>Sorry! No results found .</p>
+          </div>
         )}
-        <div className="noResult">
-          <img src={noResult} style={{ width: "70%" }} alt="not found" />
-        </div>
       </div>
     </div>
   );
