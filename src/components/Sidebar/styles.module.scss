@@ -16,8 +16,6 @@
     height: 48px;
 }
 .menu{
-    display: flex;
-    flex-direction:column;
     &_wrapper{
         display:flex;
         flex-direction: column;
@@ -35,9 +33,8 @@
             padding-left: 8px;
             .menu_link{
                 display: flex;
-                height: 24px;
                 align-items: center;
-                gap:4px
+                gap:16px
 
 
             }

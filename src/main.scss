@@ -72,6 +72,18 @@ body{
     padding-block: 16px;
 
 }
+.noResult{
+    display:flex;
+    height: 300px;
+    align-items: center;
+    justify-content: center;
+
+}
+.content{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
 
 
 @media only screen and (max-width: 768px) {
