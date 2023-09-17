@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import styles from './styles.module.scss'
 
-const SpinLoader= () => {
+const SpinLoader = () => {
   return (
-    <div>loading</div>
-  )
-}
+    <div className={styles.spinnerContainer}>
+      <div className={styles.spinner}></div>
+    </div>
+  );
+};
 
-export default SpinLoader
+export default SpinLoader;
