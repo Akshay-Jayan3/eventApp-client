@@ -66,27 +66,28 @@ const PastEvents = () => {
           <SpinLoader />
         ) : error ? (
           <div className="error-container">
-            <img src={errorImage} style={{ width: "10%" }} alt="error" />
+            <img src={errorImage} style={{ width: "50px" }} alt="error" />
             <p>Oops ,something went wrong.</p>
             <p>Please try again later</p>
           </div>
         ) : pastEventData?.pastEvents.length !== 0 ? (
-          <TabContent>
-            { pastEventData?.pastEvents.map((event) => (
-            <EventCard
-              Title={event.title}
-              category={event.category}
-              date={event.startDate}
-              time={event.time}
-              location={event.location}
-              key={event._id}
-              photoUrls={event.photoUrls}
-            />
+          <div className="data-container">
+            {pastEventData?.pastEvents.map((event) => (
+              <EventCard
+                Title={event.title}
+                category={event.category}
+                date={event.startDate}
+                time={event.time}
+                location={event.location}
+                key={event._id}
+                photoUrls={event.photoUrls}
+              />
             ))}
-          </TabContent>
+          </div>
+
         ) : (
           <div className="noResult">
-            <img src={noResult} style={{ width: "20%" }} alt="not found" />
+            <img src={noResult} style={{ width: "100px" }} alt="not found" />
             <p>Sorry! No results found .</p>
           </div>
         )}
