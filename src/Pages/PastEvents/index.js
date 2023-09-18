@@ -71,20 +71,19 @@ const PastEvents = () => {
             <p>Please try again later</p>
           </div>
         ) : pastEventData?.pastEvents.length !== 0 ? (
-          <div className="data-container">
-            {pastEventData?.pastEvents.map((event) => (
-              <EventCard
-                Title={event.title}
-                category={event.category}
-                date={event.startDate}
-                time={event.time}
-                location={event.location}
-                key={event._id}
-                photoUrls={event.photoUrls}
-              />
+          <TabContent>
+            { pastEventData?.pastEvents.map((event) => (
+            <EventCard
+              Title={event.title}
+              category={event.category}
+              date={event.startDate}
+              time={event.time}
+              location={event.location}
+              key={event._id}
+              photoUrls={event.photoUrls}
+            />
             ))}
-          </div>
-
+          </TabContent>
         ) : (
           <div className="noResult">
             <img src={noResult} style={{ width: "100px" }} alt="not found" />
