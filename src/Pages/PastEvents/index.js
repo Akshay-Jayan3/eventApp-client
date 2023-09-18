@@ -66,7 +66,7 @@ const PastEvents = () => {
           <SpinLoader />
         ) : error ? (
           <div className="error-container">
-            <img src={errorImage} style={{ width: "10%" }} alt="error" />
+            <img src={errorImage} style={{ width: "50px" }} alt="error" />
             <p>Oops ,something went wrong.</p>
             <p>Please try again later</p>
           </div>
@@ -86,7 +86,7 @@ const PastEvents = () => {
           </TabContent>
         ) : (
           <div className="noResult">
-            <img src={noResult} style={{ width: "20%" }} alt="not found" />
+            <img src={noResult} style={{ width: "100px" }} alt="not found" />
             <p>Sorry! No results found .</p>
           </div>
         )}
