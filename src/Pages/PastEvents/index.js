@@ -21,7 +21,7 @@ const PastEvents = () => {
   };
 
   const categoryUrl = "/categories";
-  const basePastEventsUrl = "/events";
+  const basePastEventsUrl = "/events/pastEvents";
   let url = basePastEventsUrl;
 
   if (searchValue !== "") {
@@ -41,7 +41,7 @@ const PastEvents = () => {
   return (
     <div className="main_container">
       <div className="welcomeBadge_container">
-        <WelcomeBadge Page="UpcomingEvents" />
+        <WelcomeBadge Page="PastEvents" />
       </div>
       <Search searchValue={searchValue} handleSearch={handleSearch} />
       <Tab>
