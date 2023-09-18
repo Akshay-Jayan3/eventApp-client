@@ -21,8 +21,8 @@ const UpcomingEvents = () => {
   };
 
   const categoryUrl = "/categories";
-  const basePastEventsUrl = "/events/upcomingEvents";
-  let url = basePastEventsUrl;
+  const baseUpcomingEventsUrl = "/events/upcomingEvents";
+  let url = baseUpcomingEventsUrl;
 
   if (searchValue !== "") {
     url += `?search=${searchValue}`;
