@@ -1,11 +1,11 @@
 import React from 'react';
 import WelcomeBadge from '../../components/WelcomeBadge';
-// import Infocard from '../../components/Infocard';
+import Infocard from '../../components/Infocard';
 import TabDash from "../../components/TabDash";
 import EventCard from '../../components/EventCard';
 import styles from "./styles.module.scss";
 import { Link } from 'react-router-dom';
-import SmallCalendar from '../../components/Calendar/SmallCalendar';
+// import SmallCalendar from '../../components/Calendar/SmallCalendar';
 
 const Dashboard = () => {
  
@@ -36,7 +36,7 @@ const Dashboard = () => {
         <WelcomeBadge Page="Dashboard" />
       </div>
       <div className='card_container'>
-        {/* <div><Infocard></Infocard></div> */}
+        <div><Infocard></Infocard></div>
       </div>
       <div className={styles.main}>
         <div className={styles.left}>
@@ -82,7 +82,7 @@ const Dashboard = () => {
           </div>
         </div>
         <div className={styles.right}>
-           <SmallCalendar></SmallCalendar>
+           {/* <SmallCalendar></SmallCalendar> */}
         </div>
       </div>
     </div>
