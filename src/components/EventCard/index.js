@@ -1,10 +1,8 @@
 import React from "react";
 import styles from "./styles.module.scss";
 import EventPhoto from "../../assets/images/teemu-paananen-bzdhc5b3Bxs-unsplash.jpg";
-import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
-import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import CategoryIcon from '@mui/icons-material/Category';
+
 
 const EventCard = ({ date, location, category, Title, time ,photoUrls}) => {
   return (

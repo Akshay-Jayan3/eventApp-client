@@ -13,6 +13,10 @@ import errorImage from "../../assets/images/error.png";
 const UpcomingEvents = () => {
   const [activeTab, setActiveTab] = useState("All");
   const [searchValue, setSearchValue] = useState("");
+  const welcomeText = {
+    mainTag: "Stay Ahead with Our Upcoming Events !",
+    subTag: " Explore the calendar, save the dates, and gear up for an unforgettable tech journey",
+  };
   const handleTabChange = (tabName) => {
     setActiveTab(tabName);
   };
@@ -42,7 +46,7 @@ const UpcomingEvents = () => {
   return (
     <div className="main_container">
       <div className="welcomeBadge_container">
-        <WelcomeBadge Page="UpcomingEvents" />
+        <WelcomeBadge Page="UpcomingEvents" welcomeText={welcomeText} />
       </div>
       <Search searchValue={searchValue} handleSearch={handleSearch} />
       <Tab>

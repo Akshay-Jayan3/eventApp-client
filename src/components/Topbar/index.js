@@ -1,16 +1,16 @@
-import React,{useContext} from "react";
+import React, { useContext } from "react";
 import Styles from "./styles.module.scss";
-import { UserContext } from '../../contexts/authContext'; 
+import { UserContext } from "../../contexts/authContext";
 import profile from "../../assets/images/ProfilePic.jpg";
 import { useNavigate } from "react-router";
 
 const Topbar = () => {
-  const { user ,updateUser} = useContext(UserContext);
+  const { user, updateUser } = useContext(UserContext);
   const navigate = useNavigate();
   const handleLogout = () => {
-    updateUser(null)
+    updateUser(null);
     localStorage.removeItem("token");
-    localStorage.removeItem('userData');
+    localStorage.removeItem("userData");
     navigate("/login");
   };
 
@@ -19,7 +19,14 @@ const Topbar = () => {
       <div className={Styles.logo}>logo</div>
       <div className={Styles.Profile}>
         <div className={Styles.ProficePic}>
-          <img src={profile} alt="profile-pic"></img>
+          <img
+            src={
+              user?.profile_picture
+                ? `${process.env.REACT_APP_API_URL}/${user?.profile_picture}`
+                : profile
+            }
+            alt="profile_Photo"
+          />
         </div>
         <div>{user?.full_name}</div>
         <div>

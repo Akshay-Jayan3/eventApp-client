@@ -1,0 +1,102 @@
+@import '../../Styles/colors';
+
+.Cardcontainer {
+    width: 220px;
+    border: 1px solid $secondary-grey;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-block: 8px;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease-out;
+    &:hover {
+        box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+        transform: rotateZ(0.02turn);
+    }
+}
+
+.Profilephoto {
+    height: 200px;
+    width: 200px;
+    background-image: url('../../assets//images/birthday-frame.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+
+    img {
+        width: 60%;
+        height: 70%;
+        object-fit: cover;
+
+    }
+}
+
+.Title {
+    display: flex;
+    align-items: center;
+    padding-block: 4px;
+    padding-inline: 20px;
+    color:$text-black;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 500;
+}
+
+.eventDetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    padding-inline: 8px;
+    padding-block: 8px;
+    .date{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-inline: 16px;
+        gap: 8px;
+    
+        span {
+            color: $primary-grey;
+    
+        }
+    
+        p {
+            color: $primary-grey;
+            font-size: 12px;
+            font-family: 'Nunito', sans-serif;
+    
+        }
+    
+    }
+    
+    .designation {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-inline: 16px;
+        gap: 4px;
+    
+        span {
+            color: $primary-grey;
+    
+        }
+    
+        p {
+            color: $primary-grey;
+            font-size: 1rem;
+            font-family: 'Nunito', sans-serif;
+    
+        }
+    
+    
+    }
+}
+
