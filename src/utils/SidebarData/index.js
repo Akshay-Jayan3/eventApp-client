@@ -25,31 +25,31 @@ export const SidebarData = [
     title: "Dashboard",
     path: "/dashboard",
     key: "_dashboard",
-    icon: <DashboardOutlinedIcon />,
+    icon: <DashboardOutlinedIcon fontSize="small"/>,
   },
   {
     title: "Past Events",
     path: "/past_events",
     key: "_past_events",
-    icon: <EventAvailableOutlinedIcon />,
+    icon: <EventAvailableOutlinedIcon fontSize="small"/>,
   },
   {
     title: "Upcoming Events",
     path: "/upcoming_events",
     key: "_upcoming_events",
-      icon: <EventUpcoming/>,
+      icon: <EventUpcoming fontSize="small"/>,
   },
 
   {
     title: "Upcoming Birthdays",
     path: "/upcoming_birthdays",
     key: "_upcoming_birthdays",
-      icon: <CelebrationOutlinedIcon />,
+      icon: <CelebrationOutlinedIcon fontSize="small"/>,
   },
   {
     title: "Schedule",
     path: "/schedule",
     key: "_schedule",
-    icon: <EditCalendarOutlinedIcon />,
+    icon: <EditCalendarOutlinedIcon fontSize="small"/>,
   },
 ];

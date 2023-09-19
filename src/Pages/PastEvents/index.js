@@ -13,6 +13,10 @@ import errorImage from "../../assets/images/error.png";
 const PastEvents = () => {
   const [activeTab, setActiveTab] = useState("All");
   const [searchValue, setSearchValue] = useState("");
+  const welcomeText = {
+    mainTag: "Timeless Memories: Explore Past Events !",
+    subTag: " The past comes alive in our Past Events Gallery.",
+  };
   const handleTabChange = (tabName) => {
     setActiveTab(tabName);
   };
@@ -41,7 +45,7 @@ const PastEvents = () => {
   return (
     <div className="main_container">
       <div className="welcomeBadge_container">
-        <WelcomeBadge Page="PastEvents" />
+        <WelcomeBadge Page="PastEvents" welcomeText={welcomeText} />
       </div>
       <Search searchValue={searchValue} handleSearch={handleSearch} />
       <Tab>
@@ -73,15 +77,15 @@ const PastEvents = () => {
         ) : pastEventData?.pastEvents.length !== 0 ? (
           <TabContent>
             { pastEventData?.pastEvents.map((event) => (
-            <EventCard
-              Title={event.title}
-              category={event.category}
-              date={event.startDate}
-              time={event.time}
-              location={event.location}
-              key={event._id}
-              photoUrls={event.photoUrls}
-            />
+              <EventCard
+                Title={event.title}
+                category={event.category}
+                date={event.startDate}
+                time={event.time}
+                location={event.location}
+                key={event._id}
+                photoUrls={event.photoUrls}
+              />
             ))}
           </TabContent>
         ) : (

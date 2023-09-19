@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useContext } from "react";
+import { UserContext } from "../../contexts/authContext";
 import WelcomeBadge from '../../components/WelcomeBadge';
 import Infocard from '../../components/Infocard';
 import TabDash from "../../components/TabDash";
 import EventCard from '../../components/EventCard';
 import styles from "./styles.module.scss";
 import { Link } from 'react-router-dom';
-// import SmallCalendar from '../../components/Calendar/SmallCalendar';
+import useFetch from "../../hooks/useFetch";
+
 
 const Dashboard = () => {
- 
-  // changed this file
+  const { user } = useContext(UserContext);
+  const {data}=useFetch('/events/count')
+  const welcomeText={mainTag:`Welcome Back , ${user?.full_name}` ,subTag:`Today you have ${data?.totalEvents} upcoming events!`}
 
   const Events = [
     {
@@ -33,10 +36,10 @@ const Dashboard = () => {
   return (
     <div className='main_container'>
       <div className="welcomeBadge_container">
-        <WelcomeBadge Page="Dashboard" />
+        <WelcomeBadge Page="Dashboard" welcomeText={welcomeText}/>
       </div>
       <div className='card_container'>
-        <div><Infocard></Infocard></div>
+        <div><Infocard TodayCount={data?.totalEvents} upcomingCount={data?.upcomingEventCount}></Infocard></div>
       </div>
       <div className={styles.main}>
         <div className={styles.left}>
