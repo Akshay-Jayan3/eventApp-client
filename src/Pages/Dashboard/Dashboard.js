@@ -7,7 +7,7 @@ import EventCard from '../../components/EventCard';
 import styles from "./styles.module.scss";
 import { Link } from 'react-router-dom';
 import useFetch from "../../hooks/useFetch";
-// import SmallCalendar from '../../components/Calendar/SmallCalendar';
+
 
 const Dashboard = () => {
   const { user } = useContext(UserContext);
