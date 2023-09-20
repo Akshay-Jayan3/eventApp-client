@@ -4,6 +4,8 @@ import BasicDateCalendar from "../../components/calender";
 import Fullcalendar from "../../components/fullcalender";
 import NewEvent from "../../components/Button/NewEvent";
 import Modal from "../../components/Modal";
+import Datepicker from "../../components/Datepicker";
+import Timepicker from "../../components/Timepicker";
 
 const Schedule = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,8 +18,16 @@ const Schedule = () => {
     setIsOpen(false);
   };
   const [credentials, setCredentials] = useState({
-    username: "",
-    password: "",
+    title: "",
+    location: "",
+    category: "",
+    description: "",
+    startDate: "",
+    EndDate: "",
+    StartTime: "",
+    EndTime: "",
+    attendees: "",
+    organizedBy: "",
   });
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,46 +50,57 @@ const Schedule = () => {
             <NewEvent onclick={openModal} />
           </div>
           <BasicDateCalendar />
-          <Modal
+        </div>
+        <div className="fullcalender">
+          <Fullcalendar />
+        </div>
+      </div>
+      <Modal
             title={"modal"}
             isOpen={isOpen}
             openModal={openModal}
             closeModal={closeModal}
           >
-            <div className="addEvent-container">
-              <form onSubmit={handleSubmit}>
-                <div>
+              <form onSubmit={handleSubmit} className="addEventForm">
+                <div className="addEventContainer">
+                <div className="detailWrapper">
+                <div className="heading">
+                 <p>Event Details</p>
+                </div>
+                <div className="input-container">
                   <input
-                    // className={styles.inputContainer}
+                    id="title"
                     type="text"
-                    name="username"
-                    placeholder="username"
-                    value={credentials.username}
+                    name="title"
+                    placeholder="Title"
+                    value={credentials.title}
                     onChange={handleInputChange}
                   />
                 </div>
-                <br />
-                <div>
+                {/* <br /> */}
+                <div className="input-container">
                   <input
-                    // className={styles.inputContainer}
-                    type="password"
-                    name="password"
-                    placeholder="password"
-                    value={credentials.password}
+                    type="text"
+                    name="location"
+                    placeholder="location"
+                    value={credentials.location}
                     onChange={handleInputChange}
                   />
                 </div>
-                <br />
-                <button type="submit">Login</button>
+                <div  className="date-container"><Datepicker/><Timepicker/></div>
+                
+                <textarea></textarea>
+                </div>
+                <div className="peopleWrapper">
+                <div className="heading">
+                 <p>People</p>
+                </div>
+                </div>
+                </div>
+              
+               
               </form>
-            </div>
           </Modal>
-        </div>
-
-        <div className="fullcalender">
-          <Fullcalendar />
-        </div>
-      </div>
     </div>
   );
 };

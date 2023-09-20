@@ -116,27 +116,89 @@ body {
     }
 }
 
-.calender{
+.calender {
     display: flex;
     padding-inline: 48px;
-    gap:8px;
-    .calender_wrapper{
+    gap: 8px;
+
+    .calender_wrapper {
         display: flex;
         flex-direction: column;
-        .button{
+
+        .button {
             display: flex;
             justify-content: center;
             align-items: center;
-            height:48px
+            height: 48px
         }
     }
-    .fullcalender{
-        width: 100%; 
+
+    .fullcalender {
+        width: 100%;
         min-height: 50vh;
     }
 }
+ .addEventForm{
+    padding-inline: 16px;
+    padding-block: 16px;
+    .addEventContainer {
+        width: 56vw;
+        display: flex;
+        .detailWrapper{
+            width:50%;
+            // background-color: #B10DC9;
+            .heading{
+                padding-block: 8px;
+            }
+            .input-container{
+                padding-inline: 16px;
+                padding-block: 8px;
+               
+                input[type="text"] {
+                    width: 100%;
+                    padding: 5px;
+                    border: 1px solid $primary-grey;
+                    border-radius: 5px;
+                    padding-left: 30px;
+                    color: #4A4A4A;
+                }
+                #title{
+                    width: 100%;
+                    padding: 15px;
+                    border: 1px solid $primary-grey;
+                    border-radius: 5px;
+                    padding-left: 30px;
+                    color: #4A4A4A;
+                    outline: none;
+                    &:focus{
+                        border: 1px solid $primary-blue;
+                        outline: none
+                    }
 
-
+                }
+                input:focus {
+                    border: 1px solid $primary-blue;
+                    outline: none
+                }
+                
+            }
+            .date-container{
+                padding-inline: 16px;
+                padding-block: 8px;
+            }
+    
+        }
+        .peopleWrapper{
+            width:50%;
+            // background-color: aqua;
+            .heading{
+                padding-block: 8px;
+            }
+        }
+    
+    }
+    
+ }
 
 
 @media only screen and (max-width: 768px) {

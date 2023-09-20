@@ -16,10 +16,10 @@ function Modal({ title, isOpen, openModal, closeModal, children }) {
             </div>
 
             <div className={styles.modalContent}>{children}</div>
-            <div>
-              {" "}
-              <button onClick={openModal}>Cancel</button>
-              <button onClick={openModal}>Submit</button>
+            <div className={styles.buttonWrapper}>
+             
+              <button className={styles.cancel} onClick={openModal}>Cancel</button>
+              <button className={styles.submit} onClick={openModal}>Submit</button>
             </div>
           </div>
         </div>

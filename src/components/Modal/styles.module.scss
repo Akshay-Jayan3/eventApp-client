@@ -1,3 +1,5 @@
+@import '../../Styles/colors';
+
 .modal {
     position: fixed;
     top: 0;
@@ -24,7 +26,7 @@
 
     .title {
         width: 100%;
-        background-color: red;
+        // background-color: red;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -36,6 +38,30 @@
 
     .modalContent {
         width: 100%;
-        background-color: aqua;
+        // background-color: aqua;
+    }
+    .buttonWrapper{
+        width: 100%;
+        padding-inline: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 16px;
+        button{
+            padding-inline: 16px;
+            padding-block: 8px;
+            border-radius: 5px;
+            border:none
+            
+        }
+        .submit{
+            background-color: $primary-blue;
+            color:$primary-text
+        }
+        .cancel{
+            background-color: $white;
+            color:$primary-red;
+            border:1px solid $primary-red
+        }
     }
 }
