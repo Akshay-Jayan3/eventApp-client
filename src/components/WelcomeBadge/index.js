@@ -1,5 +1,4 @@
-import React, {useContext} from "react";
-import { UserContext } from "../../contexts/authContext";
+import React from "react";
 import styles from "./styles.module.scss";
 const WelcomeBadge = ({ Page, welcomeText }) => {
 

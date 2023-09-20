@@ -116,6 +116,27 @@ body {
     }
 }
 
+.calender{
+    display: flex;
+    padding-inline: 48px;
+    gap:8px;
+    .calender_wrapper{
+        display: flex;
+        flex-direction: column;
+        .button{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height:48px
+        }
+    }
+    .fullcalender{
+        width: 100%; 
+        min-height: 50vh;
+    }
+}
+
+
 
 
 @media only screen and (max-width: 768px) {

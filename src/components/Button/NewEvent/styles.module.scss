@@ -1,0 +1,14 @@
+@import '../../../Styles/colors';
+.wrapper{
+    padding-inline:16px;
+    padding-block: 8px;
+    background-color: $primary-blue;
+    color:$primary-text;
+    border:none;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:8px;
+    font-family: 'Roboto', sans-serif;
+}
