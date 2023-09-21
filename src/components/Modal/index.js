@@ -4,7 +4,6 @@ import styles from "./styles.module.scss";
 function Modal({ title, isOpen, openModal, closeModal, children }) {
   return (
     <>
-      <button onClick={openModal}>Open Modal</button>
       {isOpen && (
         <div className={styles.modal}>
           <div className={styles.modalWrapper}>

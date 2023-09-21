@@ -10,6 +10,18 @@
 body {
     box-sizing: border-box;
 }
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Background color of the track */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 10px; /* Color of the scrollbar thumb */
+  }
 
 //pages only
 
@@ -137,68 +149,207 @@ body {
         width: 100%;
         min-height: 50vh;
     }
+
+
 }
- .addEventForm{
-    padding-inline: 16px;
-    padding-block: 16px;
-    .addEventContainer {
-        width: 56vw;
-        display: flex;
-        .detailWrapper{
-            width:50%;
-            // background-color: #B10DC9;
-            .heading{
-                padding-block: 8px;
+
+.EventForm {
+    width: 64vw;
+    display: flex;
+    gap: 24px;
+
+    .detailWrapper {
+        width: 60%;
+        height: 72vh;
+        overflow-y: auto;
+
+        // background-color: #B10DC9;
+        .heading {
+            padding-block: 8px;
+            padding-left: 16px;
+            p{
+                font-size: 14px;
+                font-family: 'Nunito', sans-serif;
+                color: $text-grey;
             }
-            .input-container{
-                padding-inline: 16px;
-                padding-block: 8px;
-               
-                input[type="text"] {
-                    width: 100%;
-                    padding: 5px;
-                    border: 1px solid $primary-grey;
-                    border-radius: 5px;
-                    padding-left: 30px;
-                    color: #4A4A4A;
-                }
-                #title{
-                    width: 100%;
-                    padding: 15px;
-                    border: 1px solid $primary-grey;
-                    border-radius: 5px;
-                    padding-left: 30px;
-                    color: #4A4A4A;
+        }
+
+
+        .flex-wrapper {
+            display: flex;
+        }
+
+        .input-container {
+            padding-inline: 16px;
+            padding-block: 8px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+
+            select,
+            textarea,
+            input[type="text"],
+            [type="date"],
+            [type="time"] {
+                width: 100%;
+                padding: 8px;
+                border: 1px solid $primary-grey;
+                border-radius: 5px;
+                padding-left: 30px;
+                color: #4A4A4A;
+            }
+
+            #title {
+                width: 100%;
+                padding: 15px;
+                border: 1px solid $primary-grey;
+                border-radius: 5px;
+                padding-left: 30px;
+                color: #4A4A4A;
+                outline: none;
+
+                &:focus {
+                    border: 1px solid $primary-blue;
                     outline: none;
-                    &:focus{
-                        border: 1px solid $primary-blue;
-                        outline: none
-                    }
+                    background-color: $secondary-blue;
+                }
+
+            }
+
+            input:focus {
+                border: 1px solid $primary-blue;
+                outline: none;
+                background-color: $secondary-blue;
+            }
+
+            .error-message {
+                color: $primary-red;
+                font-size: 12px;
+                font-family: 'Nunito', sans-serif;
+                align-self: flex-start;
+            }
+
+        }
+
+    }
+
+    .peopleWrapper {
+        width: 40%;
+        height: 70vh;
+        overflow-y: auto;
+        .heading {
+            padding-block: 8px;
+            padding-left: 16px;
+            p{
+                font-size: 14px;
+                font-family: 'Nunito', sans-serif;
+            }
+        }
+
+        .input-container {
+            padding-inline: 16px;
+            padding-block: 8px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            input[type="text"] {
+                width: 100%;
+                padding: 8px;
+                border: 1px solid $primary-grey;
+                border-radius: 5px;
+                padding-left: 30px;
+                color: #4A4A4A;
+            }
+
+
+            input:focus {
+                border: 1px solid $primary-blue;
+                outline: none;
+                background-color: $secondary-blue;
+            }
+
+
+        }
+        .organizer{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-inline: 16px;
+            padding-block: 8px;
+            border-bottom: 1px solid $ternery-grey;
+            .name{
+                font-size: 13px;
+                font-family: 'Nunito', sans-serif;
+                color:$text-black;
+                font-weight: 500;
+            }
+            .email{
+                font-size: 12px;
+                color: $text-grey;
+                font-family: 'Nunito', sans-serif;
+            }
+            .tag{
+                .organizer{
+                    padding-inline: 8px;
+                    padding-block: 8px;
+                    background-color: $ternery-grey;
+                    color:$text-black;
+                    font-family: 'Roboto', sans-serif;
+                    font-size: 12px;
+                    border-radius: 5px;
 
                 }
-                input:focus {
-                    border: 1px solid $primary-blue;
-                    outline: none
-                }
-                
             }
-            .date-container{
+
+            
+        }
+        .attendees-wrapper{
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+
+            .attendees{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
                 padding-inline: 16px;
                 padding-block: 8px;
+                border-bottom: 1px solid $ternery-grey;
+                .name{
+                    font-size: 13px;
+                    font-family: 'Nunito', sans-serif;
+                    color:$text-black;
+                    font-weight: 500;
+                }
+                .email{
+                    font-size: 12px;
+                    color: $text-grey;
+                    font-family: 'Nunito', sans-serif;
+                }
+                .tag{
+                    button{
+                        padding-inline: 8px;
+                        padding-block: 8px;
+                        background-color: $secondary-blue;
+                        color:$primary-blue;
+                        font-family: 'Roboto', sans-serif;
+                        font-size: 12px;
+                        border-radius: 5px;
+                        border: none;
+                    }
+                }
             }
-    
+
         }
-        .peopleWrapper{
-            width:50%;
-            // background-color: aqua;
-            .heading{
-                padding-block: 8px;
-            }
-        }
-    
+        
     }
-    
- }
+
+}
+
 
 
 @media only screen and (max-width: 768px) {
