@@ -27,9 +27,15 @@
     .title {
         width: 100%;
         // background-color: red;
+        padding-bottom: 8px;
+        padding-inline: 16px;
         display: flex;
         align-items: center;
         justify-content: space-between;
+        border-bottom: 2px solid $ternery-grey;
+        font-size: 16px;
+        font-weight: 500;
+        
 
         .close {
             cursor: pointer;
@@ -38,7 +44,9 @@
 
     .modalContent {
         width: 100%;
-        // background-color: aqua;
+    }
+    .modalContent::-webkit-scrollbar-thumb {
+        background: #a85d5d;
     }
     .buttonWrapper{
         width: 100%;

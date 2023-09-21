@@ -14,7 +14,7 @@ const WelcomeBadge = ({ Page, welcomeText }) => {
             : Page === "UpcomingBirthday"
             ? "linear-gradient(to right, #27ae60, #3498db)"
             : Page === "Dashboard"
-            ? "linear-gradient(to right, #FD5900, #FD5401)"
+            ? "linear-gradient(to right, #007fff ,#0D6EFD)"
             : null,
       }}
     >
