@@ -6,16 +6,16 @@ const Infocard = ({TodayCount,upcomingCount,upcomingBirthdayCount}) => {
     // infocard 
     return (
         <div className={styles.main}>
-            <div className={styles.icard}>
-                <p className={styles.ntext}>{TodayCount}</p>
+            <div className={styles.icard} id={styles.today} >
+                <p className={styles.ntext}>{TodayCount}56</p>
                 <p className={styles.text}>Events Today</p>
             </div>
-            <div className={styles.icard}>
-                <p className={styles.ntext}>{upcomingCount}</p>
+            <div className={styles.icard} id={styles.upcoming}>
+                <p className={styles.ntext}>{upcomingCount}45</p>
                 <p className={styles.text} >Upcoming Events</p>
             </div>
-            <div className={styles.icard}>
-                <p className={styles.ntext}>{upcomingBirthdayCount}</p>
+            <div className={styles.icard} id={styles.birthday}>
+                <p className={styles.ntext}>0</p>
                 <p className={styles.text}>Upcoming Birthdays</p>
             </div>
             <div className={styles.ecard}>

@@ -1,17 +1,23 @@
 import React from "react";
 import styles from "./styles.module.scss";
 import EventPhoto from "../../assets/images/teemu-paananen-bzdhc5b3Bxs-unsplash.jpg";
-import LocationOnIcon from '@mui/icons-material/LocationOn';
+import LocationOnIcon from "@mui/icons-material/LocationOn";
 
-
-const EventCard = ({ date, location, category, Title, time ,photoUrls}) => {
+const EventCard = ({ date, location, category, Title, time, photoUrls }) => {
   return (
     <div className={styles.Cardcontainer}>
       <div className={styles.EventPhoto}>
-        <img src={photoUrls? `${process.env.REACT_APP_API_URL}/${photoUrls}`:EventPhoto} alt="event_Photo" />
+        <img
+          src={
+            photoUrls
+              ? `${process.env.REACT_APP_API_URL}/${photoUrls}`
+              : EventPhoto
+          }
+          alt="event_Photo"
+        />
       </div>
       <div className={styles.eventDetails}>
-      <div className={styles.DetailsWrapper}>
+        <div className={styles.DetailsWrapper}>
           <div className={styles.item}>
             <p>Dec 12th-15th</p>
           </div>
@@ -26,12 +32,12 @@ const EventCard = ({ date, location, category, Title, time ,photoUrls}) => {
           <h4>{Title}</h4>
         </div>
         <div className={styles.location}>
-            <span>
-              <LocationOnIcon fontSize="xsmall" />
-            </span>
-            <p>{location}</p>
-          </div>
-       
+          <span>
+            <LocationOnIcon fontSize="xsmall" />
+          </span>
+          <p>{location}</p>
+        </div>
+
         {/* <div className={styles.DetailsWrapper}>
           <div className={styles.item}>
             <span>
@@ -46,7 +52,6 @@ const EventCard = ({ date, location, category, Title, time ,photoUrls}) => {
             <p>{category}</p>
           </div>
         </div> */}
-       
       </div>
     </div>
   );

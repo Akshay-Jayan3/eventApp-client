@@ -9,6 +9,7 @@ import Search from "../../components/Search";
 import noResult from "../../assets/images/no-data.png";
 import SpinLoader from "../../components/SpinLoader";
 import errorImage from "../../assets/images/error.png";
+import { Link } from "react-router-dom";
 
 const PastEvents = () => {
   const [activeTab, setActiveTab] = useState("All");
@@ -77,6 +78,7 @@ const PastEvents = () => {
         ) : pastEventData?.pastEvents.length !== 0 ? (
           <TabContent>
             { pastEventData?.pastEvents.map((event) => (
+              <Link to={`/events/:${event._id}`}>
               <EventCard
                 Title={event.title}
                 category={event.category}
@@ -86,6 +88,8 @@ const PastEvents = () => {
                 key={event._id}
                 photoUrls={event.photoUrls}
               />
+              </Link>
+              
             ))}
           </TabContent>
         ) : (

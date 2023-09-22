@@ -12,14 +12,6 @@
     background-color: $surface-bg;
     height: 56px;
 }
-.tabBorder{
-    height: 3px;
-    width: 3.33%;
-    background-color: blue;
-    transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
-    transform: translateX(calc((var(--active-tab) - 1) * 103.33%));
-    width: var(--tab-width, 100px); /* Default width */
-}
 .tabs{
     display: flex;
     align-items: center;

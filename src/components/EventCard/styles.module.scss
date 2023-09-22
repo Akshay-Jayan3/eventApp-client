@@ -1,22 +1,25 @@
 @import '../../Styles/colors';
 
 .Cardcontainer {
-    width: 280px;
-    border: 1px solid $secondary-grey;
+    width: 240px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     gap: 8px;
-    padding-bottom: 8px;
-    transition: all 0.3s ease-out;
+    padding-bottom: 4px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 15px 15px 30px #bebebe,
+               -15px -15px 30px #ffffff;
+    transition: 0.2s ease-in-out;
     &:hover {
-        box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
-        transform: scale(1.1);
+        cursor: pointer;
+        box-shadow: 0px 10px 20px rgba(0,0,0,0.1);
     }
 }
 
 .EventPhoto {
-    height: 180px;
+    height: 150px;
 
     img {
         width: 100%;
@@ -41,7 +44,7 @@
 .eventDetails {
     display: flex;
     flex-direction: column;
-    gap: 4px
+    // gap: 4px
 }
 
 .location {
