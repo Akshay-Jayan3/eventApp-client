@@ -5,11 +5,13 @@
     padding-inline: 30px;
     display: flex;
     flex-direction: column;
-    border-radius: 10px;
     align-items: center;
     justify-content: center;
-    background-color: #fff;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border:1px solid rgba(255, 255, 255, 0.4);
     .wrapper{
         width:100%;
         display: flex;
@@ -23,12 +25,12 @@
 
     .welcome {
         h2 {
-            color: #B10DC9;
+            color: #fff;
             margin-bottom: 8px;
         }
 
         p {
-            color: #4A4A4A;
+            color: #fff;
             font-size: 14px;
         }
 
@@ -62,7 +64,7 @@
 
         button {
             margin-top: 5px;
-            background-color: #6C63FF;
+            background-color: #2419f7;
             border: none;
             padding: 15px;
             border-radius: 5px;
@@ -72,7 +74,7 @@
         }
 
         button:hover {
-            background-color: #7e78f0;
+            background-color: #150bd9;
         }
     }
 
@@ -83,13 +85,16 @@
         p {
             display: inline;
             margin-right: 10px;
-            color: #4A4A4A;
+            color: #fff;
             font-size: 14px;
 
         }
 
         a {
             font-size: 14px;
+            color: #fff;
+            text-decoration: none;
+
         }
 
         width:100%
@@ -101,20 +106,25 @@
      .wrapper{
         .welcome {
             h2 {
-                color: #B10DC9;
+                color: #fff;
                 margin-bottom: 8px;
                 font-size: 18px;
             }
     
             p {
-                color: #4A4A4A;
-                font-size: 12px;
+                color: #fff;
+                font-size: 14px;
             }
     
             text-align: center;
         }
     
         form{
+            display: flex;
+            width:200px;
+            flex-direction: column;
+            gap: 3px;
+
             input[type="text"],
             input[type="password"] {
                 width: 100%;
@@ -126,13 +136,16 @@
             }
             button {
                 margin-top: 5px;
-                background-color: #6C63FF;
+                background-color: #2419f7;
                 border: none;
                 padding: 10px;
                 border-radius: 5px;
                 color: #fff;
                 font-weight: 400;
                 font-size: 16px;
+                &:hover {
+                    background-color: #150bd9;
+                }
             }
             .signup {
                 p {       

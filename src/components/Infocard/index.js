@@ -7,25 +7,25 @@ const Infocard = ({TodayCount,upcomingCount,upcomingBirthdayCount}) => {
     return (
         <div className={styles.main}>
             <div className={styles.icard} id={styles.today} >
-                <p className={styles.ntext}>{TodayCount}56</p>
+                <p className={styles.ntext}>{TodayCount}</p>
                 <p className={styles.text}>Events Today</p>
             </div>
             <div className={styles.icard} id={styles.upcoming}>
-                <p className={styles.ntext}>{upcomingCount}45</p>
+                <p className={styles.ntext}>{upcomingCount}</p>
                 <p className={styles.text} >Upcoming Events</p>
             </div>
             <div className={styles.icard} id={styles.birthday}>
-                <p className={styles.ntext}>0</p>
+                <p className={styles.ntext}>{upcomingBirthdayCount}</p>
                 <p className={styles.text}>Upcoming Birthdays</p>
             </div>
             <div className={styles.ecard}>
                 <div className={styles.econtent}>
-                    <EditCalendarOutlinedIcon style={{ width: "20px", height: "20px" }}></EditCalendarOutlinedIcon>
+                    <EditCalendarOutlinedIcon style={{ width: "20px", height: "20px", color:"0D6EFD" }}></EditCalendarOutlinedIcon>
                     <Link to="/schedule" className={styles.underline}>
-                        <p className={styles.etext}>Create New Event</p>
+                        <p className={styles.elink}>Create New Event</p>
                     </Link>
                 </div>
-                <p className={styles.text}>Schedule your favourite events</p>
+                <p className={styles.etext}>Schedule your favourite events</p>
             </div>
         </div>
     )

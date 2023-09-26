@@ -1,7 +1,7 @@
 @import '../../Styles/colors';
 
 .Cardcontainer {
-    width: 240px;
+    width: 272px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -19,7 +19,22 @@
 }
 
 .EventPhoto {
-    height: 150px;
+    height: 132px;
+    position: relative;
+    .category {
+        position:absolute;
+        top:8px;
+        right:8px;
+        border-radius: 5px;
+        padding-inline: 8px;
+        padding-block: 4px;
+
+        p {
+            font-size: 10px;
+            font-weight: 500;
+
+        }
+    }
 
     img {
         width: 100%;
@@ -29,13 +44,14 @@
         object-fit: cover;
 
     }
+
+
 }
 
 .Title {
     display: flex;
     align-items: center;
-    padding-block: 4px;
-    padding-inline: 20px;
+    padding-inline: 16px;
     color:$text-black;
     font-family: 'Nunito', sans-serif;
     font-weight: 500;
@@ -44,7 +60,7 @@
 .eventDetails {
     display: flex;
     flex-direction: column;
-    // gap: 4px
+    gap: 4px
 }
 
 .location {
@@ -58,7 +74,6 @@
     }
 
     p {
-        color: $primary-grey;
         font-size: 12px;
 
     }
@@ -70,7 +85,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-inline: 20px;
+    padding-inline: 16px;
 
     .item {
         p {
@@ -81,18 +96,6 @@
         }
     }
 
-    .category {
-        border-radius: 5px;
-        background-color: $secondary-green;
-        padding-inline: 8px;
-        padding-block: 4px;
-
-        p {
-            color: $primary-green;
-            font-size: 12px;
-            font-weight: 400;
-
-        }
-    }
+    
 
 }

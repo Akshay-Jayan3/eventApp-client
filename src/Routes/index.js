@@ -67,7 +67,7 @@ const PageRouter = () => {
                 }
               />
                <Route
-                path="/events/:id"
+                path="/events/:eventId"
                 element={
                   <ProtectedRoute>
                     <EventDetails />

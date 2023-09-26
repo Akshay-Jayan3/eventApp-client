@@ -30,59 +30,51 @@ body {
 
 .login {
     display: flex;
-    height: 100%;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    padding-inline: 72px;
+    align-items: center;
+    justify-content: flex-start;
+    background: linear-gradient(to bottom, $primary-violet, $primary-blue);
 
-    .left_container {
-        width: 50%;
-        height: 100vh;
+    img {
+        width: 70%;
+        height: auto;
+        filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.6));
+
+    }
+
+    h3 {
+        color: #fff;
+        font-size: 20px;
+        margin-bottom: 32px;
+    }
+
+    .floating-image {
         display: flex;
-        flex-direction: column;
-        align-items: center;
         justify-content: center;
-        gap: 80px;
         align-items: center;
-        background-color: #B10DC9;
+        animation: float 5s ease-in-out infinite;
+    }
 
-        img {
-            width: 80%;
-            height: auto;
-            filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.6));
+    @keyframes float {
 
+        0%,
+        100% {
+            transform: translateY(0);
         }
 
-        h3 {
-            color: #fff;
-            font-size: 20px;
-        }
-
-        .floating-image {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            animation: float 5s ease-in-out infinite;
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
+        50% {
+            transform: translateY(-10px);
         }
     }
 
     .right_container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: #F4E5F9;
-        width: 50%;
-        height: 100vh;
-        padding-inline: 30px;
+        position:absolute;
+        top:48px;
+        right: 132px;
 
     }
 }
@@ -157,6 +149,34 @@ body {
 
 }
 
+
+.form-buttons {
+    width: 100%;
+    padding-inline: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 16px;
+
+    button {
+        padding-inline: 16px;
+        padding-block: 8px;
+        border-radius: 5px;
+        border: none
+    }
+
+    button[type="submit"] {
+        background-color: $primary-blue;
+        color: $primary-text
+    }
+
+    .cancel-button {
+        background-color: $white;
+        color: $primary-red;
+        border: 1px solid $primary-red
+    }
+}
+
 .EventForm {
     width: 64vw;
     display: flex;
@@ -176,7 +196,7 @@ body {
             p {
                 font-size: 14px;
                 font-family: 'Nunito', sans-serif;
-                color: $text-grey;
+                color: $text-black;
             }
         }
 
@@ -217,14 +237,15 @@ body {
                     padding-inline: 8px;
                     padding-block: 8px;
                     margin-left: 16px;
-                    border-radius: 5px ;
+                    border-radius: 5px;
                     border: none;
                     display: flex;
                     align-items: center;
-                    gap:4px;
-                    color:$text-black;
+                    gap: 4px;
+                    color: $text-black;
                     background-color: $ternery-grey;
-                    &:hover{
+
+                    &:hover {
                         color: $primary-blue;
                         background-color: $secondary-blue;
                     }
@@ -233,18 +254,24 @@ body {
                 #endDate {
                     margin-left: 36px;
                 }
-                input:focus ,select:focus ,textarea:focus {
+
+                input:focus,
+                select:focus,
+                textarea:focus {
                     border: 1px solid $primary-blue;
                     outline: none;
                     background-color: $light-blue;
                 }
 
-                input::placeholder, select::placeholder ,textarea::placeholder{
+                input::placeholder,
+                select::placeholder,
+                textarea::placeholder {
                     font-family: 'Roboto', sans-serif;
                     letter-spacing: 1px;
                 }
-                select{
-                    option{
+
+                select {
+                    option {
                         color: $text-grey;
                         font-family: 'Roboto', sans-serif;
                         font-size: 12px;
@@ -262,7 +289,8 @@ body {
                 padding-left: 30px;
                 color: #4A4A4A;
                 outline: none;
-                &::placeholder{
+
+                &::placeholder {
                     font-size: 18px;
                 }
 
@@ -274,7 +302,7 @@ body {
 
             }
 
-           
+
 
             .error-message {
                 margin-left: 36px;
@@ -283,14 +311,15 @@ body {
                 font-family: 'Nunito', sans-serif;
                 align-self: flex-start;
             }
-            .selected{
+
+            .selected {
                 padding-inline: 8px;
                 padding-block: 4px;
-                margin-top: 4px     ;
+                margin-top: 4px;
                 background-color: $ternery-grey;
-                color:$text-grey;
+                color: $text-grey;
                 width: 100%;
-                height:20px;
+                height: 20px;
                 font-size: 12px;
                 display: flex;
                 align-items: center;
@@ -315,6 +344,7 @@ body {
             p {
                 font-size: 14px;
                 font-family: 'Nunito', sans-serif;
+                color: $text-black;
             }
         }
 
@@ -353,7 +383,8 @@ body {
                 outline: none;
                 background-color: $light-blue;
             }
-            input::placeholder{
+
+            input::placeholder {
                 font-family: 'Roboto', sans-serif;
             }
 
@@ -448,14 +479,203 @@ body {
 
 @media only screen and (max-width: 768px) {
     .login {
+        position: static;
         .left_container {
             display: none;
         }
 
         .right_container {
+            position:static;
             width: 100%;
-
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
         }
     }
 
+}
+
+.event-container {
+    padding-inline: 48px;
+    padding-block: 24px;
+    width: 100%;
+
+    .error-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-block: 20px;
+        gap: 8px;
+        min-height: 50vh;
+
+        p {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 500;
+            line-height: 1.5rem;
+        }
+    }
+
+    .noResult {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 50vh;
+        gap: 8px;
+
+        p {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 500;
+        }
+    }
+
+    .event-wrapper {
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+        background-color: $surface-bg;
+
+        .event-header {
+            width: 100%;
+            padding-inline: 24px;
+            padding-block: 24px;
+            background-color: $primary-blue;
+            border-top-right-radius: 10px;
+            border-top-left-radius: 10px;
+            height: 160px;
+            display: flex;
+            flex-direction: column;
+            gap: 48px;
+
+            .event-heading {
+                display: flex;
+                justify-content: space-between;
+
+                .editEvent {
+                    button {
+                        background-color: $primary-blue;
+                        color: $primary-text;
+                        border: none;
+
+                        &:hover {
+                            cursor: pointer;
+
+                        }
+                    }
+                }
+
+                h2 {
+                    color: $primary-text;
+                    font-family: 'Nunito', sans-serif;
+                    letter-spacing: 2px;
+
+                }
+
+                p {
+                    color: $primary-text;
+                    font-family: 'Roboto', sans-serif;
+                    font-size: 12px;
+                }
+
+            }
+
+            .event-details {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 50%;
+
+                .details {
+                    display: flex;
+                    gap: 4px;
+                    color: #fff;
+                    font-size: 14px;
+                    // p{
+
+                    // }
+                }
+            }
+        }
+
+        .event-participants {
+            width: 100%;
+            background-color: $surface-bg;
+            padding-inline: 24px;
+            padding-block: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .participants {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+
+                p {
+                    font-size: 12px;
+                    color: $primary-grey;
+                    font-family: 'Nunito', sans-serif;
+
+                }
+
+                .profiles {
+                    width: 48px;
+                    height: 48px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+
+                    img {
+                        clip-path: circle(50%);
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+
+                    }
+
+                }
+
+
+            }
+
+            .add-participants {
+                button {
+                    padding-inline: 8px;
+                    padding-block: 8px;
+                    background-color: $secondary-blue;
+                    color: $primary-blue;
+                    font-family: 'Roboto', sans-serif;
+                    font-size: 14px;
+                    border-radius: 5px;
+                    border: none;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+
+        }
+
+        .event-content {
+            width: 100%;
+            padding-inline: 16px;
+            padding-block: 16px;
+
+            .about {
+                padding-inline: 16px;
+                padding-block: 16px;
+
+                p {
+                    font-size: 14px;
+                    line-height: 1.5rem;
+                    font-family: 'Nunito', sans-serif;
+                }
+            }
+
+            // background-color: #B10DC9;
+        }
+    }
 }
