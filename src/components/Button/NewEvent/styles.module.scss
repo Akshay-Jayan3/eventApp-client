@@ -11,4 +11,11 @@
     justify-content: center;
     gap:8px;
     font-family: 'Roboto', sans-serif;
+    &:hover{
+        cursor: pointer;
+    }
 }
+
+.wrapper:active {
+    transform: scale(0.9);
+  }

@@ -7,6 +7,7 @@ import EventCard from '../../components/EventCard';
 import styles from "./styles.module.scss";
 import { Link } from 'react-router-dom';
 import useFetch from "../../hooks/useFetch";
+import BasicDateCalendar from "../../components/calender";
 
 
 const Dashboard = () => {
@@ -85,7 +86,7 @@ const Dashboard = () => {
           </div>
         </div>
         <div className={styles.right}>
-           {/* <SmallCalendar></SmallCalendar> */}
+          <BasicDateCalendar/>
         </div>
       </div>
     </div>

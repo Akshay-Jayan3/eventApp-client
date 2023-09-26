@@ -13,16 +13,18 @@
             width: 100%;
             height:40px;
             padding: 12px;
-            border: 1px solid $secondary-grey;
+            // border: 1px solid $secondary-grey;
+            border:none;
             border-radius: 5px;
             padding-left: 30px;
-            color:$primary-grey;
+            color:$text-grey;
+            background-color: $light-blue;
 
         }
         input:focus {
             border: 1px solid $primary-grey;
             outline: none;
-            background-color: $ternery-grey;
+            // background-color: $ternery-grey;
         }
         input::placeholder {
             color:$primary-grey; /* You can change the color to your preference */

@@ -9,6 +9,7 @@ import Search from "../../components/Search";
 import noResult from "../../assets/images/no-data.png";
 import SpinLoader from "../../components/SpinLoader";
 import errorImage from "../../assets/images/error.png";
+import { Link } from "react-router-dom";
 
 const PastEvents = () => {
   const [activeTab, setActiveTab] = useState("All");
@@ -57,7 +58,7 @@ const PastEvents = () => {
         {categoryData?.categories.map((category) => (
           <>
             <TabePane
-              tabname={category.category}
+              tabname={category?.label}
               onClick={() => handleTabChange(category.category)}
               key={category._id}
               activeTab={activeTab}
@@ -76,16 +77,20 @@ const PastEvents = () => {
           </div>
         ) : pastEventData?.pastEvents.length !== 0 ? (
           <TabContent>
-            { pastEventData?.pastEvents.map((event) => (
-              <EventCard
-                Title={event.title}
-                category={event.category}
-                date={event.startDate}
-                time={event.time}
-                location={event.location}
-                key={event._id}
-                photoUrls={event.photoUrls}
-              />
+            {pastEventData?.pastEvents.map((event) => (
+              <Link to={`/events/${event._id}`} key={event._id} style={{width:"272px" ,textDecoration:"none"}}>
+                <EventCard
+                  Title={event.title}
+                  location={event.location}
+                  category={event.category}
+                  startDate={event.startDate}
+                  EndDate={event.EndDate}
+                  StartTime={event.StartTime}
+                  EndTime={event.EndTime}
+                  photoUrls={event.photoUrls}
+                  
+                />
+              </Link>
             ))}
           </TabContent>
         ) : (

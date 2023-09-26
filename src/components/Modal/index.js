@@ -1,7 +1,7 @@
-import React  from "react";
+import React from "react";
 import styles from "./styles.module.scss";
 
-function Modal({ title, isOpen, openModal, closeModal, children }) {
+function Modal({ title, isOpen, openModal, closeModal, children,showButtons }) {
   return (
     <>
       {isOpen && (
@@ -15,11 +15,17 @@ function Modal({ title, isOpen, openModal, closeModal, children }) {
             </div>
 
             <div className={styles.modalContent}>{children}</div>
-            <div className={styles.buttonWrapper}>
-             
-              <button className={styles.cancel} onClick={openModal}>Cancel</button>
-              <button className={styles.submit} onClick={openModal}>Submit</button>
-            </div>
+            { 
+            showButtons &&
+              <div className={styles.buttonWrapper}>
+                <button className={styles.cancel} onClick={closeModal}>
+                  Cancel
+                </button>
+                <button className={styles.submit} onClick={openModal}>
+                  Submit
+                </button>
+              </div>
+            }
           </div>
         </div>
       )}

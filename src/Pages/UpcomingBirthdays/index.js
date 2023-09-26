@@ -10,12 +10,15 @@ import errorImage from "../../assets/images/error.png";
 
 const UpcomingBirthdays = () => {
   const { data, loading, error } = useFetch('/auth/users');
-  console.log(data)
+  const welcomeText = {
+    mainTag: "Upcoming Birthdays: Let's Celebrate Together !",
+    subTag: "Keep an eye out for these upcoming birthdays . Let's make each birthday a meaningful part of our collective celebration.",
+  };
   return (
     <div className="main_container">
       {" "}
       <div className="welcomeBadge_container">
-        <WelcomeBadge Page="UpcomingBirthday" />
+        <WelcomeBadge Page="UpcomingBirthday" welcomeText={welcomeText}/>
       </div>
       <div className="container">
         {loading ? (

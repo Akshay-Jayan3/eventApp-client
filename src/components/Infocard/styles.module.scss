@@ -1,3 +1,4 @@
+@import '../../Styles//colors';
 .main {
     display: flex;
     padding: 16px 48px;
@@ -9,18 +10,45 @@
 .icard {
     display: flex;
     width: 240px;
+    height:150px;
     padding: 10px;
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
-    border-radius: 5px;
-    background: var(--Surface-primary, #FFF);
-    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    
+    border-radius: 15px;
+    background: #fff;
+    // box-shadow: -5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3);
+    box-shadow: 0px 10px 20px rgba(0,0,0,0.1);
+}
+#today{
+    background-color: $primary-violet;
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;    
+}
+#upcoming{
+    background-color:$primary-orange;
+    // &:hover{
+    //     background-color: $primary-orange;
+    //     color:#fff
+    // }
+
+}
+#birthday{
+    background-color: $primary-teal;
+    // &:hover{
+    //     background-color: $primary-yellow;
+    //     color:#fff
+    // }
 }
 
 .ntext {
-    color: var(--text-color, #4A4A4A);
-    font-family: Nunito;
+    color: $primary-text;
+    font-family: 'Nunito', sans-serif;
     font-size: 30px;
     font-style: normal;
     font-weight: 600;
@@ -28,9 +56,9 @@
 }
 
 .text {
-    color: var(--Grey-D, #AAA);
-    font-family: Nunito;
-    font-size: 14px;
+    color:$primary-text;
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
@@ -38,16 +66,24 @@
 
 .ecard {
     display: flex;
-    width: 300px;
-    // height: 104px;
+    width: 240px;
+    height:150px;
     padding: 10px 0px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 10px;
-    border-radius: 5px;
+    border-radius: 15px;
     background: var(--Surface-primary, #FFF);
-    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 10px 20px rgba(0,0,0,0.1);
+    .etext{
+        color: #0D0C22;
+        font-size: 14px;
+        font-family: Nunito;
+        font-weight: 300;
+    }
+    
+    // box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25);
 }
 
 .econtent {
@@ -57,9 +93,10 @@
     gap: 10px;
     border-radius: 5px;
     background: var(--secondary-bg, #E5F0FF);
+   
 }
 
-.etext {
+.elink {
     color: var(--primary-button-text, #0D6EFD);
     font-family: Nunito;
     font-size: 16px;

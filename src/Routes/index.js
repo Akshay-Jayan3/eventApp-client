@@ -13,6 +13,7 @@ const UpcomingBirthdays = lazy(() =>
   import("../Pages/UpcomingBirthdays/index")
 );
 const Schedule = lazy(() => import("../Pages/Schedule/index"));
+const EventDetails= lazy(() => import("../Pages/EventDetails/index"));
 
 const PageRouter = () => {
   return (
@@ -62,6 +63,14 @@ const PageRouter = () => {
                 element={
                   <ProtectedRoute>
                     <Schedule />
+                  </ProtectedRoute>
+                }
+              />
+               <Route
+                path="/events/:eventId"
+                element={
+                  <ProtectedRoute>
+                    <EventDetails />
                   </ProtectedRoute>
                 }
               />
