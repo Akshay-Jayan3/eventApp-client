@@ -1,7 +1,9 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect, useContext } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import axios from "axios";
+import useFetch from "../../hooks/useFetch";
+import { client } from "../../services/api";
+import { UserContext } from "../../contexts/authContext";
 import EventNoteOutlinedIcon from "@mui/icons-material/EventNoteOutlined";
 import AddLocationAltOutlinedIcon from "@mui/icons-material/AddLocationAltOutlined";
 import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
@@ -11,53 +13,103 @@ import ScheduleOutlinedIcon from "@mui/icons-material/ScheduleOutlined";
 import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
 import GroupAddOutlinedIcon from "@mui/icons-material/GroupAddOutlined";
 
-
 const EventForm = ({ id, eventDetails }) => {
+  // console.log(id)
+  // console.log(eventDetails)
+  const { user } = useContext(UserContext);
   const [eventId, setEventId] = useState(id);
   const [details, setDetails] = useState(eventDetails);
+  const [attendees, setAttendees] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
+  const [selectedAttendee, setSelectedAttendee] = useState([]);
+  const categoryUrl = "/categories";
+  const UsersUrl = searchValue !== "" && `/auth/users?search=${searchValue}`;
+  const { data: categoryData } = useFetch(categoryUrl);
+  const { data: userData } = useFetch(UsersUrl);
+  const url = eventId ? `/events/update/${eventId}` : "events/create";
+  console.log(details);
+  useEffect(() => {
+    if (eventDetails) {
+      setSelectedAttendee(eventDetails.attendees);
+    } else {
+      setAttendees(userData);
+    }
+  }, [userData, eventDetails]);
+  const handleSearch = (e) => {
+    const newValue = e.target.value;
+    setSearchValue(newValue);
+    if (newValue === "") {
+      setAttendees(null);
+    }
+  };
+  const handleRemoveAttendee = (userId) => {
+    console.log(userId);
+    const updatedAttendees = selectedAttendee.filter(
+      (user) => user._id !== userId
+    );
+    setSelectedAttendee(updatedAttendees);
+  };
 
   const fileInputRef = useRef(null);
   const initialValues = {
     title: details ? details.title : "",
     location: details ? details.location : "",
-    category: details ? details.category : "",
+    category: details ? details.category._id : "",
     startDate: details ? details.startDate : "",
-    endDate: details ? details.endDate : "",
-    startTime: details ? details.startTime : "",
-    endTime: details ? details.endTime : "",
+    EndDate: details ? details.EndDate : "",
+    StartTime: details ? details.startTime : "",
+    EndTime: details ? details.endTime : "",
     description: details ? details.description : "",
-    event_photos: [],
-    add_attendees: [],
+    event_photos: details ? details.event_photos : [],
   };
 
   const validationSchema = Yup.object({
     title: Yup.string().required("Title is required"),
     category: Yup.string().required("Category is required"),
     startDate: Yup.date().required("Start Date is required"),
-    endDate: Yup.date().required("End Date is required"),
-    startTime: Yup.string().required("Start Time is required"),
-    description: Yup.string(),
-    add_attendees: Yup.string(),
+    EndDate: Yup.date().required("End Date is required"),
   });
 
   const handleFileButtonClick = () => {
     fileInputRef.current.click();
   };
   const onSubmit = async (values) => {
+    console.log(values)
+    values.attendees = selectedAttendee.map((attendee) => attendee._id);
+    values.organizedBy = user?.id;
+    const formData = new FormData();
+    formData.append("title", values.title);
+    formData.append("location", values.location);
+    formData.append("category", values.category);
+    formData.append("startDate", values.startDate);
+    formData.append("EndDate", values.EndDate);
+    formData.append("StartTime", values.StartTime);
+    formData.append("EndTime", values.EndTime);
+    formData.append("description", values.description);
+    formData.append("attendees", values.attendees);
+    formData.append("organizedBy", values.organizedBy);
+    formData.append("event_photos", values.event_photos[0])
+    // details && details.event_photos.length > 0
+    //   ? formData.append("event_photos", details.event_photos)
+    //   : formData.append("event_photos", values.event_photos[0]);
     try {
-      // You can send the form data to your server using axios or another library
-      await axios.post("/api/events", values);
-      // Handle success or redirect to a success page
+      const response = id
+        ? await client.put(url, formData)
+        : await client.post(url, formData);
+      if (response.status === 200) {
+        alert("Event Added successfully");
+        setDetails(undefined);
+        //  setEventId(undefined)
+      } else {
+        console.error(response.data.message);
+      }
     } catch (error) {
-      // Handle error
+      console.error(
+        "An error occurred during adding new event:",
+        error.message
+      );
     }
   };
-  const categoryOptions = [
-    "Category 1",
-    "Category 2",
-    "Category 3",
-    // Add more category options as needed
-  ];
 
   const formik = useFormik({
     initialValues,
@@ -65,7 +117,7 @@ const EventForm = ({ id, eventDetails }) => {
     onSubmit,
   });
   function truncateText(text, maxLength) {
-    if (text.length > maxLength) {
+    if (text?.length > maxLength) {
       return text.substring(0, maxLength) + "...";
     }
     return text;
@@ -132,9 +184,9 @@ const EventForm = ({ id, eventDetails }) => {
                   value={formik.values.category}
                 >
                   <option value="" label="Select a category" />
-                  {categoryOptions.map((option) => (
-                    <option key={option} value={option}>
-                      {option}
+                  {categoryData?.categories.map((option) => (
+                    <option key={option._id} value={option._id}>
+                      {option?.label}
                     </option>
                   ))}
                 </select>
@@ -169,7 +221,7 @@ const EventForm = ({ id, eventDetails }) => {
                 </button>
               </div>
 
-              {formik.values.event_photos.length > 0 && (
+              {formik.values.event_photos?.length > 0 && (
                 <div className="selected">
                   {formik.values.event_photos.map((file) => (
                     <span key={file.name}>{truncateText(file.name, 25)}</span>
@@ -201,55 +253,55 @@ const EventForm = ({ id, eventDetails }) => {
             </div>
             <div className="input-container">
               <div className="input-content">
-                <label htmlFor="startTime"></label>
+                <label htmlFor="StartTime"></label>
                 <input
                   type="time"
-                  id="startTime"
-                  name="startTime"
+                  id="StartTime"
+                  name="StartTime"
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
-                  value={formik.values.startTime}
+                  value={formik.values.StartTime}
                 />
               </div>
 
-              {formik.touched.startTime && formik.errors.startTime ? (
-                <div className="error-message">{formik.errors.startTime}</div>
+              {formik.touched.StartTime && formik.errors.StartTime ? (
+                <div className="error-message">{formik.errors.StartTime}</div>
               ) : null}
             </div>
           </div>
           <div className="flex-wrapper">
             <div className="input-container">
               <div className="input-content">
-                <label htmlFor="endDate"></label>
+                <label htmlFor="EndDate"></label>
                 <input
                   type="date"
-                  id="endDate"
-                  name="endDate"
+                  id="EndDate"
+                  name="EndDate"
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
-                  value={formik.values.endDate}
+                  value={formik.values.EndDate}
                 />
               </div>
 
-              {formik.touched.endDate && formik.errors.endDate ? (
-                <div className="error-message">{formik.errors.endDate}</div>
+              {formik.touched.EndDate && formik.errors.EndDate ? (
+                <div className="error-message">{formik.errors.EndDate}</div>
               ) : null}
             </div>
             <div className="input-container">
               <div className="input-content">
-                <label htmlFor="endTime"></label>
+                <label htmlFor="EndTime"></label>
                 <input
                   type="time"
-                  id="endTime"
-                  name="endTime"
+                  id="EndTime"
+                  name="EndTime"
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
-                  value={formik.values.endTime}
+                  value={formik.values.EndTime}
                 />
               </div>
 
-              {formik.touched.endTime && formik.errors.endTime ? (
-                <div className="error-message">{formik.errors.endTime}</div>
+              {formik.touched.EndTime && formik.errors.EndTime ? (
+                <div className="error-message">{formik.errors.EndTime}</div>
               ) : null}
             </div>
           </div>
@@ -260,7 +312,7 @@ const EventForm = ({ id, eventDetails }) => {
                 <DescriptionOutlinedIcon fontSize="small" />
               </label>
               <textarea
-                rows={4}
+                rows={5}
                 id="description"
                 placeholder="Description"
                 name="description"
@@ -289,9 +341,8 @@ const EventForm = ({ id, eventDetails }) => {
                 id="add_attendees"
                 name="add_attendees"
                 placeholder="Invite someone"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values.location}
+                onChange={handleSearch}
+                value={searchValue}
               />
             </div>
 
@@ -301,76 +352,56 @@ const EventForm = ({ id, eventDetails }) => {
           </div>
           <div className="organizer">
             <div>
-              <p className="name">Akshay Jayan</p>
-              <p className="email">akshay@thinkpalm</p>
+              <p className="name">{user?.full_name}</p>
+              <p className="email">{user?.email}</p>
             </div>
             <div className="tag">
               <div className="organizer">Organizer</div>
             </div>
           </div>
-          <div className="attendees-wrapper">
-            <div className="attendees">
-              <div>
-                <p className="name">Akshay Jayan</p>
-                <p className="email">akshay@thinkpalm</p>
+          {selectedAttendee?.length !== 0 &&
+            selectedAttendee?.map((user) => (
+              <div className="attendees-wrapper">
+                <div className="attendees">
+                  <div>
+                    <p className="name">{user.full_name}</p>
+                    <p className="email">{user.email}</p>
+                  </div>
+                  <div className="tag">
+                    <button onClick={() => handleRemoveAttendee(user._id)}>
+                      Remove
+                    </button>
+                  </div>
+                </div>
               </div>
-              <div className="tag">
-                <button>Add</button>
-              </div>
-            </div>
-            <div className="attendees">
-              <div>
-                <p className="name">Akshay Jayan</p>
-                <p className="email">akshay@thinkpalm</p>
-              </div>
-              <div className="tag">
-                <button>Add</button>
-              </div>
-            </div>
-            <div className="attendees">
-              <div>
-                <p className="name">Akshay Jayan</p>
-                <p className="email">akshay@thinkpalm</p>
-              </div>
-              <div className="tag">
-                <button>Add</button>
-              </div>
-            </div>
-            <div className="attendees">
-              <div>
-                <p className="name">Akshay Jayan</p>
-                <p className="email">akshay@thinkpalm</p>
-              </div>
-              <div className="tag">
-                <button>Add</button>
-              </div>
-            </div>
-            <div className="attendees">
-              <div>
-                <p className="name">Akshay Jayan</p>
-                <p className="email">akshay@thinkpalm</p>
-              </div>
-              <div className="tag">
-                <button>Add</button>
-              </div>
-            </div>
-            <div className="attendees">
-              <div>
-                <p className="name">Akshay Jayan</p>
-                <p className="email">akshay@thinkpalm</p>
-              </div>
-              <div className="tag">
-                <button>Add</button>
-              </div>
-            </div>
-          </div>
+            ))}
+          {attendees?.length !== 0
+            ? attendees?.users?.map((user) => (
+                <div className="attendees-wrapper">
+                  <div className="attendees">
+                    <div>
+                      <p className="name">{user.full_name}</p>
+                      <p className="email">{user.email}</p>
+                    </div>
+                    <div className="tag">
+                      <button
+                        onClick={() => {
+                          setSelectedAttendee((prev) => [...prev, user]);
+                          setAttendees([]);
+                        }}
+                      >
+                        Add
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))
+            : null}
         </div>
       </div>
-      <div className='form-buttons'>
-        <button className='cancel-button'>
-          Cancel
-        </button>
-        <button type="submit" className="submit-button" >
+      <div className="form-buttons">
+        <button className="cancel-button">Cancel</button>
+        <button type="submit" className="submit-button">
           Submit
         </button>
       </div>

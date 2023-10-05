@@ -45,15 +45,15 @@ const EventDetails = () => {
         </div>
       ) : eventDetails ? (
         <div className="event-wrapper">
-          <div className="event-header">
+          <div className="event-header" style={{backgroundColor:eventDetails?.category?.mainColor}}>
             <div className="event-heading">
               <div>
                 <h2>{eventDetails?.title}</h2>
                 <p>organized by {eventDetails?.organizedBy?.full_name}</p>
               </div>
               <div className="editEvent">
-                <button onClick={openModal}>
-                  <EditOutlinedIcon />
+                <button onClick={openModal} >
+                  <EditOutlinedIcon/>
                 </button>
               </div>
             </div>
@@ -73,7 +73,7 @@ const EventDetails = () => {
               </div>
               <div className="details">
                 <CategoryOutlinedIcon fontSize="small" />
-                <p>{eventDetails?.category}</p>
+                <p>{eventDetails?.category?.label}</p>
               </div>
             </div>
           </div>

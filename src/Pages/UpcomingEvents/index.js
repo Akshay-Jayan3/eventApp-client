@@ -9,6 +9,7 @@ import Search from "../../components/Search";
 import noResult from "../../assets/images/no-data.png";
 import SpinLoader from "../../components/SpinLoader";
 import errorImage from "../../assets/images/error.png";
+import { Link } from "react-router-dom";
 
 const UpcomingEvents = () => {
   const [activeTab, setActiveTab] = useState("All");
@@ -41,7 +42,6 @@ const UpcomingEvents = () => {
   }
   const { data: categoryData } = useFetch(categoryUrl);
   const { data: upcomingEventData, loading, error } = useFetch(url);
-  console.log(error);
 
   return (
     <div className="main_container">
@@ -58,7 +58,7 @@ const UpcomingEvents = () => {
         {categoryData?.categories.map((category) => (
           <>
             <TabePane
-              tabname={category.category}
+               tabname={category?.label}
               onClick={() => handleTabChange(category.category)}
               key={category._id}
               activeTab={activeTab}
@@ -78,15 +78,19 @@ const UpcomingEvents = () => {
         ) : upcomingEventData?.upcomingEvents.length !== 0 ? (
           <TabContent>
             { upcomingEventData?.upcomingEvents.map((event) => (
-            <EventCard
-              Title={event.title}
-              category={event.category}
-              date={event.startDate}
-              time={event.time}
-              location={event.location}
-              key={event._id}
-              photoUrls={event.photoUrls}
-            />
+             <Link to={`/events/${event._id}`} key={event._id} style={{width:"272px" ,textDecoration:"none"}}>
+             <EventCard
+               Title={event.title}
+               location={event.location}
+               category={event.category}
+               startDate={event.startDate}
+               EndDate={event.EndDate}
+               StartTime={event.StartTime}
+               EndTime={event.EndTime}
+               event_photos={event.event_photos[0]?.filepath}
+               
+             />
+           </Link>
             ))}
           </TabContent>
         ) : (

@@ -40,7 +40,6 @@ const Login = () => {
   };
   return (
     <div className="login">
-      <div className="left_container"> <h3>Effortless Event Planning Starts Here - Sign in Now!</h3><div className="floating-image"><img src={image} alt="login_image"/></div></div>
       <div className="right_container"><LoginCard credentials={credentials} handleLogin={handleLogin} handleInputChange={handleInputChange}/></div>
      
       

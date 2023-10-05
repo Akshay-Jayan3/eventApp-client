@@ -11,9 +11,8 @@ const EventCard = ({
   Title,
   StartTime,
   EndTime,
-  photoUrls,
+  event_photos,
 }) => {
-  console.log(category)
   const convertDate = (startDate, EndDate) => {
     const startDateFormat = new Date(startDate);
     const EndDateFormat = new Date(EndDate);
@@ -81,8 +80,8 @@ const EventCard = ({
         </div>
         <img
           src={
-            photoUrls
-              ? `${process.env.REACT_APP_API_URL}/${photoUrls}`
+            event_photos
+              ? `${process.env.REACT_APP_API_URL}/${event_photos}`
               : EventPhoto
           }
           alt="event_Photo"
@@ -103,26 +102,8 @@ const EventCard = ({
           </div>
         </div>
         <div className={styles.location} style={{color:category?.mainColor}}>
-          <span style={{color:category?.mainColor}}>
-            <LocationOnIcon fontSize="xsmall" />
-          </span>
           <p>{location}</p>
         </div>
-
-        {/* <div className={styles.DetailsWrapper}>
-          <div className={styles.item}>
-            <span>
-              <LocationOnIcon fontSize="small" />
-            </span>
-            <p>{location}</p>
-          </div>
-          <div className={styles.item}>
-            <span>
-              <CategoryIcon fontSize="small" />
-            </span>
-            <p>{category}</p>
-          </div>
-        </div> */}
       </div>
     </div>
   );

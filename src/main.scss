@@ -36,7 +36,7 @@ body {
     display: flex;
     padding-inline: 72px;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     background: linear-gradient(to bottom, $primary-violet, $primary-blue);
 
     img {
@@ -69,13 +69,6 @@ body {
         50% {
             transform: translateY(-10px);
         }
-    }
-
-    .right_container {
-        position:absolute;
-        top:48px;
-        right: 132px;
-
     }
 }
 
@@ -167,13 +160,19 @@ body {
 
     button[type="submit"] {
         background-color: $primary-blue;
-        color: $primary-text
+        color: $primary-text;
+        &:hover{
+            cursor:pointer;
+        }
     }
 
     .cancel-button {
         background-color: $white;
         color: $primary-red;
-        border: 1px solid $primary-red
+        border: 1px solid $primary-red;
+        &:hover{
+            cursor:pointer;
+        }
     }
 }
 
@@ -184,8 +183,9 @@ body {
 
     .detailWrapper {
         width: 60%;
-        height: 72vh;
+        min-height: 50vh;
         overflow-y: auto;
+        overflow-x: hidden;
 
         // background-color: #B10DC9;
         .heading {
@@ -251,7 +251,7 @@ body {
                     }
                 }
 
-                #endDate {
+                #EndDate {
                     margin-left: 36px;
                 }
 
@@ -477,24 +477,6 @@ body {
 
 
 
-@media only screen and (max-width: 768px) {
-    .login {
-        position: static;
-        .left_container {
-            display: none;
-        }
-
-        .right_container {
-            position:static;
-            width: 100%;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-        }
-    }
-
-}
-
 .event-container {
     padding-inline: 48px;
     padding-block: 24px;
@@ -540,7 +522,6 @@ body {
             width: 100%;
             padding-inline: 24px;
             padding-block: 24px;
-            background-color: $primary-blue;
             border-top-right-radius: 10px;
             border-top-left-radius: 10px;
             height: 160px;
@@ -554,7 +535,7 @@ body {
 
                 .editEvent {
                     button {
-                        background-color: $primary-blue;
+                        background-color: transparent;
                         color: $primary-text;
                         border: none;
 
